@@ -14,14 +14,4 @@ It needs `pseudo` in the access token (mapper `pseudo` of the `profile` client
 scope, "Add to access token" on) and the `profile` scope in the client's token.
 `username` is updated on each authenticated request that carries `pseudo`.
 
-To fill every author at once, without waiting for them to log in again:
-
-```sh
-php bin/console app:users:sync-pseudos --dry-run   # counts only
-php bin/console app:users:sync-pseudos
-```
-
-The command reads the `pseudo` attribute through the Keycloak admin API with
-the client credentials of `KEYCLOAK_CLIENT_ID` / `KEYCLOAK_CLIENT_SECRET`. That
-client needs "Service accounts" enabled and the realm-management `view-users`
-role. It prints counts only.
+Until then, `user.username` is absent: clients show the author as unknown.

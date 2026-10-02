@@ -16,7 +16,7 @@ final class Version20260926105848 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // Pseudos come back on the next authenticated request, or with app:users:sync-pseudos.
+        // Pseudos come back on the next authenticated request whose token carries `pseudo`.
         $this->addSql('UPDATE "user" SET username = NULL');
     }
 
